@@ -1,0 +1,218 @@
+{% extends 'common_code/base_code.html' %}
+{% load static %}
+{% block title %} Prediction {% endblock title %}
+
+{% block content %}
+			
+			<!-- Page Wrapper -->
+            <div class="page-wrapper">
+                <div class="content container-fluid">
+				
+					<!-- Page Header -->
+					
+					<!-- /Page Header -->
+					
+					<div class="row">
+						<div class="col-lg-12">
+							<div class="card">
+								<div class="card-header">
+									<h4 class="card-title">Prediction Name Inputs</h4>
+								</div>
+								<div class="container-scroller">
+									{% if messages %}
+									<ul class="messages">
+										{% for message in messages %}
+											<div class="alert alert-{{ message.tags }}" role="alert">
+												{{ message }}
+											</div>
+										{% endfor %}
+									</ul>
+									{% endif %}
+                                <form class="forms-sample" method="POST" action="{% url 'prediction_store' %}" enctype="multipart/form-data">
+                                        {% csrf_token %}
+                                        {% comment %} <div class="form-group">
+                                            <label for="exampleSelectGender">Select Department Name</label>			
+                                              <select class="form-control" id="exampleSelectGender" name="dep_id">
+                                                <option>Select Department Name</option>
+                                                {% for data_prediction in symptom_data %}
+                                                <option value="{{ data_prediction.id }}">{{ data_prediction.depart_id_id }}</option>
+                                                {% endfor %}
+                                              </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="exampleSelectGender">Select Disease Name</label>			
+                                              <select class="form-control" id="exampleSelectGender" name="dis_id">
+                                                <option>Select Disease Name</option>
+                                                {% for data_prediction in symptom_data %}
+                                                <option value="{{ data_prediction.id }}">{{ data_prediction.disease_id }}</option>
+                                                {% endfor %}
+                                              </select>
+                                        </div> {% endcomment %}
+                                        <div class="form-group">
+                                            <label for="exampleSelectGender">Select Prediction1</label>			
+                                              <select class="form-control" id="exampleSelectGender" name="prediction1">
+                                                <option>Select Symptom1</option>
+                                                {% for data_prediction in symptom_data %}
+                                                <option value="{{ data_prediction.id }}">{{ data_prediction.symptom1 }}</option>
+                                                {% endfor %}
+                                              </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="exampleSelectGender">Select Prediction2</label>			
+                                              <select class="form-control" id="exampleSelectGender" name="prediction2">
+                                                <option>Select Symptom2</option>
+                                                {% for data_prediction in symptom_data %}
+                                                <option value="{{ data_prediction.id }}">{{ data_prediction.symptom2 }}</option>
+                                                {% endfor %}
+                                              </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="exampleSelectGender">Select Prediction3</label>			
+                                              <select class="form-control" id="exampleSelectGender" name="prediction3">
+                                                <option>Select Symptom3</option>
+                                                {% for data_prediction in symptom_data %}
+                                                <option value="{{ data_prediction.id }}">{{ data_prediction.symptom3 }}</option>
+                                                {% endfor %}
+                                              </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="exampleSelectGender">Select Prediction4</label>			
+                                              <select class="form-control" id="exampleSelectGender" name="prediction4">
+                                                <option>Select Symptom4</option>
+                                                {% for data_prediction in symptom_data %}
+                                                <option value="{{ data_prediction.id }}">{{ data_prediction.symptom4 }}</option>
+                                                {% endfor %}
+                                              </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="exampleSelectGender">Select Prediction5</label>			
+                                              <select class="form-control" id="exampleSelectGender" name="prediction5">
+                                                <option>Select Symptom5</option>
+                                                {% for data_prediction in symptom_data %}
+                                                <option value="{{ data_prediction.id }}">{{ data_prediction.symptom5 }}</option>
+                                                {% endfor %}
+                                              </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="exampleSelectGender">Select Prediction6</label>			
+                                              <select class="form-control" id="exampleSelectGender" name="prediction6">
+                                                <option>Select Symptom6</option>
+                                                {% for data_prediction in symptom_data %}
+                                                <option value="{{ data_prediction.id }}">{{ data_prediction.symptom6 }}</option>
+                                                {% endfor %}
+                                              </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="exampleSelectGender">Select Prediction7</label>			
+                                              <select class="form-control" id="exampleSelectGender" name="prediction7">
+                                                <option>Select Symptom7</option>
+                                                {% for data_prediction in symptom_data %}
+                                                <option value="{{ data_prediction.id }}">{{ data_prediction.symptom7 }}</option>
+                                                {% endfor %}
+                                              </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="exampleSelectGender">Select Prediction8</label>			
+                                              <select class="form-control" id="exampleSelectGender" name="prediction8">
+                                                <option>Select Symptom8</option>
+                                                {% for data_prediction in symptom_data %}
+                                                <option value="{{ data_prediction.id }}">{{ data_prediction.symptom8 }}</option>
+                                                {% endfor %}
+                                              </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="exampleSelectGender">Select Prediction9</label>			
+                                              <select class="form-control" id="exampleSelectGender" name="prediction9">
+                                                <option>Select Symptom9</option>
+                                                {% for data_prediction in symptom_data %}
+                                                <option value="{{ data_prediction.id }}">{{ data_prediction.symptom9 }}</option>
+                                                {% endfor %}
+                                              </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="exampleSelectGender">Select Prediction10</label>			
+                                              <select class="form-control" id="exampleSelectGender" name="prediction10">
+                                                <option>Select Symptom10</option>
+                                                {% for data_prediction in symptom_data %}
+                                                <option value="{{ data_prediction.id }}">{{ data_prediction.symptom10 }}</option>
+                                                {% endfor %}
+                                              </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="exampleSelectGender">Select Prediction11</label>			
+                                              <select class="form-control" id="exampleSelectGender" name="prediction11">
+                                                <option>Select Symptom11</option>
+                                                {% for data_prediction in symptom_data %}
+                                                <option value="{{ data_prediction.id }}">{{ data_prediction.symptom11 }}</option>
+                                                {% endfor %}
+                                              </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="exampleSelectGender">Select Prediction12</label>			
+                                              <select class="form-control" id="exampleSelectGender" name="prediction12">
+                                                <option>Select Symptom12</option>
+                                                {% for data_prediction in symptom_data %}
+                                                <option value="{{ data_prediction.id }}">{{ data_prediction.symptom12 }}</option>
+                                                {% endfor %}
+                                              </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="exampleSelectGender">Select Prediction13</label>			
+                                              <select class="form-control" id="exampleSelectGender" name="prediction13">
+                                                <option>Select Symptom13</option>
+                                                {% for data_prediction in symptom_data %}
+                                                <option value="{{ data_prediction.id }}">{{ data_prediction.symptom13 }}</option>
+                                                {% endfor %}
+                                              </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="exampleSelectGender">Select Prediction14</label>			
+                                              <select class="form-control" id="exampleSelectGender" name="prediction14">
+                                                <option>Select Symptom14</option>
+                                                {% for data_prediction in symptom_data %}
+                                                <option value="{{ data_prediction.id }}">{{ data_prediction.symptom14 }}</option>
+                                                {% endfor %}
+                                              </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="exampleSelectGender">Select Prediction15</label>			
+                                              <select class="form-control" id="exampleSelectGender" name="prediction15">
+                                                <option>Select Symptom15</option>
+                                                {% for data_prediction in symptom_data %}
+                                                <option value="{{ data_prediction.id }}">{{ data_prediction.symptom15 }}</option>
+                                                {% endfor %}
+                                              </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="exampleSelectGender">Select Prediction16</label>			
+                                              <select class="form-control" id="exampleSelectGender" name="prediction16">
+                                                <option>Select Symptom16</option>
+                                                {% for data_prediction in symptom_data %}
+                                                <option value="{{ data_prediction.id }}">{{ data_prediction.symptom16 }}</option>
+                                                {% endfor %}
+                                              </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="exampleSelectGender">Select Prediction17</label>			
+                                              <select class="form-control" id="exampleSelectGender" name="prediction17">
+                                                <option>Select Symptom17</option>
+                                                {% for data_prediction in symptom_data %}
+                                                <option value="{{ data_prediction.id }}">{{ data_prediction.symptom17 }}</option>
+                                                {% endfor %}
+                                              </select>
+                                        </div>
+                                        
+                                        <button type="submit" class="btn btn-primary me-2">Submit</button>
+                                 </form>
+								  </div>
+								</div> 
+								
+							</div>
+							
+						</div>
+					</div>
+				
+				</div>			
+			</div>
+			<!-- /Main Wrapper -->
+{% endblock content %}

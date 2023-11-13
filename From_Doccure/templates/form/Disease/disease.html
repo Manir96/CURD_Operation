@@ -1,0 +1,106 @@
+{% extends 'common_code/base_code.html' %}
+{% load static %}
+{% block title %} Disease {% endblock title %}
+
+{% block content %}
+			
+			<!-- Page Wrapper -->
+            <div class="page-wrapper">
+                <div class="content container-fluid">
+				
+					<!-- Page Header -->
+					
+					<!-- /Page Header -->
+					
+					<div class="row">
+						<div class="col-lg-12">
+							<div class="card">
+								<div class="card-header">
+									<h4 class="card-title">Disease Name Inputs</h4>
+								</div>
+								<div class="container-scroller">
+									{% if messages %}
+									<ul class="messages">
+										{% for message in messages %}
+											<div class="alert alert-{{ message.tags }}" role="alert">
+												{{ message }}
+											</div>
+										{% endfor %}
+									</ul>
+									{% endif %}
+                                <form class="forms-sample" method="POST" action="{% url 'sub_store' %}" enctype="multipart/form-data">
+                                        {% csrf_token %}
+                                        <div class="form-group">
+                                            <label for="exampleSelectGender">Select Department Name</label>			
+                                              <select class="form-control" id="exampleSelectGender" name="dep_id">
+                                                <option>Select Department</option>
+                                                {% for data in disease_data %}
+                                                <option value="{{ data.id }}">{{ data.name }}</option>
+                                                {% endfor %}
+                                              </select>
+                                        </div>
+                                        <div class="form-group">
+                                          <label for="exampleInputName1">Disease Name</label>
+                                          <input type="text" class="form-control" id="exampleInputName1" placeholder="Name" name="disease_name">
+                                        </div>
+                                        <button type="submit" class="btn btn-primary me-2">Submit</button>
+                                 </form>
+								  </div>
+								</div> 
+								
+							</div>
+							
+						</div>
+					</div>
+				
+				
+				{% comment %} <div class="row">
+					<div class="col-sm-12">
+						<div class="card">
+							<div class="card-header">
+								<h4 class="card-title">Department Information</h4>
+								
+							</div>
+							<div class="card-body">
+
+								<div class="table-responsive">
+									<table class="datatable table table-stripped">
+										<thead>
+											<tr>
+												<th>ID</th>
+												<th>Name</th>
+												<th>Action</th>
+												
+											</tr>
+										</thead>
+										<tbody>
+											{% for table_data in depart_data %}
+											<tr class="table-info">
+											  <td>
+												{{ forloop.counter }}
+											  </td>
+											  <td>
+												{{table_data.name}}
+											  </td>
+											  
+											  <td>
+												<a target="_blank" href="{% url 'edit_depar' table_data.id %}">Edit</a>
+												<a target="_blank" href="{% url 'delete_depart' table_data.id %}">Delete</a>
+												
+												
+											  </td>
+											</tr>
+											{% endfor %}
+										  </tbody>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div> {% endcomment %}
+				</div>			
+			</div>
+			<!-- /Main Wrapper -->
+		
+{% endblock content %}
