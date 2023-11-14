@@ -8,9 +8,24 @@ from django.db import IntegrityError
 
 def prediction_panel(request):
     # data_symptom = Symptom.objects.values_list('symptom1','symptom2','symptom3','symptom4','symptom5','symptom6','symptom7','symptom8','symptom9','symptom10','symptom11','symptom12','symptom13','symptom14','symptom15','symptom16','symptom17').distinct()  
-    data_symptom = Symptom.objects.values_list('symptom1',flat=True).distinct()
+    data_symptom1 = Symptom.objects.values_list('symptom1',flat=True).distinct()
     data_symptom2 = Symptom.objects.values_list('symptom2',flat=True).distinct()    
-    context = {'symptom_data':data_symptom,"symptom_data2":data_symptom2}
+    data_symptom3 = Symptom.objects.values_list('symptom3',flat=True).distinct()    
+    data_symptom4 = Symptom.objects.values_list('symptom4',flat=True).distinct()    
+    data_symptom5 = Symptom.objects.values_list('symptom5',flat=True).distinct()    
+    data_symptom6 = Symptom.objects.values_list('symptom6',flat=True).distinct()    
+    data_symptom7 = Symptom.objects.values_list('symptom7',flat=True).distinct()    
+    data_symptom8 = Symptom.objects.values_list('symptom8',flat=True).distinct()    
+    data_symptom9 = Symptom.objects.values_list('symptom9',flat=True).distinct()    
+    data_symptom10 = Symptom.objects.values_list('symptom10',flat=True).distinct()    
+    data_symptom11 = Symptom.objects.values_list('symptom11',flat=True).distinct()    
+    data_symptom12 = Symptom.objects.values_list('symptom12',flat=True).distinct()    
+    data_symptom13 = Symptom.objects.values_list('symptom13',flat=True).distinct()    
+    data_symptom14 = Symptom.objects.values_list('symptom14',flat=True).distinct()    
+    data_symptom15 = Symptom.objects.values_list('symptom15',flat=True).distinct()    
+    data_symptom16 = Symptom.objects.values_list('symptom16',flat=True).distinct()   
+    data_symptom17 = Symptom.objects.values_list('symptom17',flat=True).distinct()    
+    context = {'symptom_data1':data_symptom1,"symptom_data2":data_symptom2,"symptom_data3":data_symptom3,"symptom_data4":data_symptom4,"symptom_data5":data_symptom5,"symptom_data6":data_symptom6,"symptom_data7":data_symptom7,"symptom_data8":data_symptom8,"symptom_data9":data_symptom9,"symptom_data10":data_symptom10,"symptom_data11":data_symptom11,"symptom_data12":data_symptom12,"symptom_data13":data_symptom13,"symptom_data14":data_symptom14,"symptom_data15":data_symptom15,"symptom_data16":data_symptom16,"symptom_data17":data_symptom17}
     return render(request,'form/Prediction/prediction.html',context)
 
 def prediction_store(request): 

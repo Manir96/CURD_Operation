@@ -30,29 +30,11 @@
 									{% endif %}
                                 <form class="forms-sample" method="POST" action="{% url 'prediction_store' %}" enctype="multipart/form-data">
                                         {% csrf_token %}
-                                        {% comment %} <div class="form-group">
-                                            <label for="exampleSelectGender">Select Department Name</label>			
-                                              <select class="form-control" id="exampleSelectGender" name="dep_id">
-                                                <option>Select Department Name</option>
-                                                {% for data_prediction in symptom_data %}
-                                                <option value="{{ data_prediction.id }}">{{ data_prediction.depart_id_id }}</option>
-                                                {% endfor %}
-                                              </select>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="exampleSelectGender">Select Disease Name</label>			
-                                              <select class="form-control" id="exampleSelectGender" name="dis_id">
-                                                <option>Select Disease Name</option>
-                                                {% for data_prediction in symptom_data %}
-                                                <option value="{{ data_prediction.id }}">{{ data_prediction.disease_id }}</option>
-                                                {% endfor %}
-                                              </select>
-                                        </div> {% endcomment %}
                                         <div class="form-group">
                                             <label for="exampleSelectGender">Select Prediction1</label>			
                                               <select class="form-control" id="exampleSelectGender" name="prediction1">
                                                 <option>Select Symptom1</option>
-                                                {% for data_prediction in symptom_data %}
+                                                {% for data_prediction in symptom_data1 %}
                                                 <option value="{{ data_prediction.id }}">{{ data_prediction }}</option>
                                                 {% endfor %}
                                               </select>
@@ -70,8 +52,8 @@
                                             <label for="exampleSelectGender">Select Prediction3</label>			
                                               <select class="form-control" id="exampleSelectGender" name="prediction3">
                                                 <option>Select Symptom3</option>
-                                                {% for data_prediction in symptom_data %}
-                                                <option value="{{ data_prediction.id }}">{{ data_prediction.symptom3 }}</option>
+                                                {% for data_prediction in symptom_data3 %}
+                                                <option value="{{ data_prediction.id }}">{{ data_prediction }}</option>
                                                 {% endfor %}
                                               </select>
                                         </div>
@@ -79,8 +61,8 @@
                                             <label for="exampleSelectGender">Select Prediction4</label>			
                                               <select class="form-control" id="exampleSelectGender" name="prediction4">
                                                 <option>Select Symptom4</option>
-                                                {% for data_prediction in symptom_data %}
-                                                <option value="{{ data_prediction.id }}">{{ data_prediction.symptom4 }}</option>
+                                                {% for data_prediction in symptom_data4 %}
+                                                <option value="{{ data_prediction.id }}">{{ data_prediction }}</option>
                                                 {% endfor %}
                                               </select>
                                         </div>
@@ -88,8 +70,8 @@
                                             <label for="exampleSelectGender">Select Prediction5</label>			
                                               <select class="form-control" id="exampleSelectGender" name="prediction5">
                                                 <option>Select Symptom5</option>
-                                                {% for data_prediction in symptom_data %}
-                                                <option value="{{ data_prediction.id }}">{{ data_prediction.symptom5 }}</option>
+                                                {% for data_prediction in symptom_data5 %}
+                                                <option value="{{ data_prediction.id }}">{{ data_prediction }}</option>
                                                 {% endfor %}
                                               </select>
                                         </div>
@@ -97,8 +79,8 @@
                                             <label for="exampleSelectGender">Select Prediction6</label>			
                                               <select class="form-control" id="exampleSelectGender" name="prediction6">
                                                 <option>Select Symptom6</option>
-                                                {% for data_prediction in symptom_data %}
-                                                <option value="{{ data_prediction.id }}">{{ data_prediction.symptom6 }}</option>
+                                                {% for data_prediction in symptom_data6 %}
+                                                <option value="{{ data_prediction.id }}">{{ data_prediction }}</option>
                                                 {% endfor %}
                                               </select>
                                         </div>
@@ -106,8 +88,8 @@
                                             <label for="exampleSelectGender">Select Prediction7</label>			
                                               <select class="form-control" id="exampleSelectGender" name="prediction7">
                                                 <option>Select Symptom7</option>
-                                                {% for data_prediction in symptom_data %}
-                                                <option value="{{ data_prediction.id }}">{{ data_prediction.symptom7 }}</option>
+                                                {% for data_prediction in symptom_data7 %}
+                                                <option value="{{ data_prediction.id }}">{{ data_prediction }}</option>
                                                 {% endfor %}
                                               </select>
                                         </div>
@@ -115,8 +97,8 @@
                                             <label for="exampleSelectGender">Select Prediction8</label>			
                                               <select class="form-control" id="exampleSelectGender" name="prediction8">
                                                 <option>Select Symptom8</option>
-                                                {% for data_prediction in symptom_data %}
-                                                <option value="{{ data_prediction.id }}">{{ data_prediction.symptom8 }}</option>
+                                                {% for data_prediction in symptom_data8 %}
+                                                <option value="{{ data_prediction.id }}">{{ data_prediction }}</option>
                                                 {% endfor %}
                                               </select>
                                         </div>
@@ -124,8 +106,8 @@
                                             <label for="exampleSelectGender">Select Prediction9</label>			
                                               <select class="form-control" id="exampleSelectGender" name="prediction9">
                                                 <option>Select Symptom9</option>
-                                                {% for data_prediction in symptom_data %}
-                                                <option value="{{ data_prediction.id }}">{{ data_prediction.symptom9 }}</option>
+                                                {% for data_prediction in symptom_data9 %}
+                                                <option value="{{ data_prediction.id }}">{{ data_prediction }}</option>
                                                 {% endfor %}
                                               </select>
                                         </div>
@@ -133,8 +115,8 @@
                                             <label for="exampleSelectGender">Select Prediction10</label>			
                                               <select class="form-control" id="exampleSelectGender" name="prediction10">
                                                 <option>Select Symptom10</option>
-                                                {% for data_prediction in symptom_data %}
-                                                <option value="{{ data_prediction.id }}">{{ data_prediction.symptom10 }}</option>
+                                                {% for data_prediction in symptom_data10 %}
+                                                <option value="{{ data_prediction.id }}">{{ data_prediction }}</option>
                                                 {% endfor %}
                                               </select>
                                         </div>
@@ -142,8 +124,8 @@
                                             <label for="exampleSelectGender">Select Prediction11</label>			
                                               <select class="form-control" id="exampleSelectGender" name="prediction11">
                                                 <option>Select Symptom11</option>
-                                                {% for data_prediction in symptom_data %}
-                                                <option value="{{ data_prediction.id }}">{{ data_prediction.symptom11 }}</option>
+                                                {% for data_prediction in symptom_data11 %}
+                                                <option value="{{ data_prediction.id }}">{{ data_prediction }}</option>
                                                 {% endfor %}
                                               </select>
                                         </div>
@@ -151,8 +133,8 @@
                                             <label for="exampleSelectGender">Select Prediction12</label>			
                                               <select class="form-control" id="exampleSelectGender" name="prediction12">
                                                 <option>Select Symptom12</option>
-                                                {% for data_prediction in symptom_data %}
-                                                <option value="{{ data_prediction.id }}">{{ data_prediction.symptom12 }}</option>
+                                                {% for data_prediction in symptom_data12 %}
+                                                <option value="{{ data_prediction.id }}">{{ data_prediction }}</option>
                                                 {% endfor %}
                                               </select>
                                         </div>
@@ -160,8 +142,8 @@
                                             <label for="exampleSelectGender">Select Prediction13</label>			
                                               <select class="form-control" id="exampleSelectGender" name="prediction13">
                                                 <option>Select Symptom13</option>
-                                                {% for data_prediction in symptom_data %}
-                                                <option value="{{ data_prediction.id }}">{{ data_prediction.symptom13 }}</option>
+                                                {% for data_prediction in symptom_data13 %}
+                                                <option value="{{ data_prediction.id }}">{{ data_prediction }}</option>
                                                 {% endfor %}
                                               </select>
                                         </div>
@@ -169,8 +151,8 @@
                                             <label for="exampleSelectGender">Select Prediction14</label>			
                                               <select class="form-control" id="exampleSelectGender" name="prediction14">
                                                 <option>Select Symptom14</option>
-                                                {% for data_prediction in symptom_data %}
-                                                <option value="{{ data_prediction.id }}">{{ data_prediction.symptom14 }}</option>
+                                                {% for data_prediction in symptom_data14 %}
+                                                <option value="{{ data_prediction.id }}">{{ data_prediction }}</option>
                                                 {% endfor %}
                                               </select>
                                         </div>
@@ -178,8 +160,8 @@
                                             <label for="exampleSelectGender">Select Prediction15</label>			
                                               <select class="form-control" id="exampleSelectGender" name="prediction15">
                                                 <option>Select Symptom15</option>
-                                                {% for data_prediction in symptom_data %}
-                                                <option value="{{ data_prediction.id }}">{{ data_prediction.symptom15 }}</option>
+                                                {% for data_prediction in symptom_data15 %}
+                                                <option value="{{ data_prediction.id }}">{{ data_prediction }}</option>
                                                 {% endfor %}
                                               </select>
                                         </div>
@@ -187,8 +169,8 @@
                                             <label for="exampleSelectGender">Select Prediction16</label>			
                                               <select class="form-control" id="exampleSelectGender" name="prediction16">
                                                 <option>Select Symptom16</option>
-                                                {% for data_prediction in symptom_data %}
-                                                <option value="{{ data_prediction.id }}">{{ data_prediction.symptom16 }}</option>
+                                                {% for data_prediction in symptom_data16 %}
+                                                <option value="{{ data_prediction.id }}">{{ data_prediction }}</option>
                                                 {% endfor %}
                                               </select>
                                         </div>
@@ -196,8 +178,8 @@
                                             <label for="exampleSelectGender">Select Prediction17</label>			
                                               <select class="form-control" id="exampleSelectGender" name="prediction17">
                                                 <option>Select Symptom17</option>
-                                                {% for data_prediction in symptom_data %}
-                                                <option value="{{ data_prediction.id }}">{{ data_prediction.symptom17 }}</option>
+                                                {% for data_prediction in symptom_data17 %}
+                                                <option value="{{ data_prediction.id }}">{{ data_prediction }}</option>
                                                 {% endfor %}
                                               </select>
                                         </div>
