@@ -7,8 +7,10 @@ from django.db import IntegrityError
 # Create your views here.
 
 def prediction_panel(request):
-    data_symptom = Symptom.objects.values('symptom1','symptom2','symptom3','symptom4','symptom5','symptom6','symptom7','symptom8','symptom9','symptom10','symptom11','symptom12','symptom13','symptom14','symptom15','symptom16','symptom17').distinct()    
-    context = {'symptom_data':data_symptom}
+    # data_symptom = Symptom.objects.values_list('symptom1','symptom2','symptom3','symptom4','symptom5','symptom6','symptom7','symptom8','symptom9','symptom10','symptom11','symptom12','symptom13','symptom14','symptom15','symptom16','symptom17').distinct()  
+    data_symptom = Symptom.objects.values_list('symptom1',flat=True).distinct()
+    data_symptom2 = Symptom.objects.values_list('symptom2',flat=True).distinct()    
+    context = {'symptom_data':data_symptom,"symptom_data2":data_symptom2}
     return render(request,'form/Prediction/prediction.html',context)
 
 def prediction_store(request): 

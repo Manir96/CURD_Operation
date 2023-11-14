@@ -53,7 +53,7 @@
                                               <select class="form-control" id="exampleSelectGender" name="prediction1">
                                                 <option>Select Symptom1</option>
                                                 {% for data_prediction in symptom_data %}
-                                                <option value="{{ data_prediction.id }}">{{ data_prediction.symptom1 }}</option>
+                                                <option value="{{ data_prediction.id }}">{{ data_prediction }}</option>
                                                 {% endfor %}
                                               </select>
                                         </div>
@@ -61,8 +61,8 @@
                                             <label for="exampleSelectGender">Select Prediction2</label>			
                                               <select class="form-control" id="exampleSelectGender" name="prediction2">
                                                 <option>Select Symptom2</option>
-                                                {% for data_prediction in symptom_data %}
-                                                <option value="{{ data_prediction.id }}">{{ data_prediction.symptom2 }}</option>
+                                                {% for data_prediction in symptom_data2 %}
+                                                <option value="{{ data_prediction.id }}">{{ data_prediction }}</option>
                                                 {% endfor %}
                                               </select>
                                         </div>
