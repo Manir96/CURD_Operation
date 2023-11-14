@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+{% load static %} 
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Open Ai</title>
+
+    <!------------ Google font ------------------->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
+
+    <!-- Typed js link
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.10/typed.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.10/typed.min.js"></script> -->
+
+
+    <!--------------- Custom CSS Link ----------------->
+    <link rel="stylesheet" href="{% static 'assets/user/css/style.css' %}">
+</head>
+<body>
+    <!------------ Main body ------------------>
+    <section class="main">
+        <div class="container">
+            <div class="content_main">
+                <!-- Left side content -->
+                <div class="content_left">
+                    <div class="left_header">
+                        <a href="#">Logo</a>
+                    </div>
+                    <div class="left_body">
+                        <div class="left_slider_main">
+                            <div class="left_body_inner current">
+                                <h2 class="slider_title">Write a text</h2>
+                                <p class="slider_content">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quia obcaecati rem odit ratione eaque ad?</p>
+                            </div>
+                            <div class="left_body_inner">
+                                <h2 class="slider_title">Help me pick</h2>
+                                <p class="slider_content">, sit amet consectetur adipisicing elit. Quia obcaecati rem odit ratione eaque ad?</p>
+                            </div>
+                            <div class="left_body_inner">
+                                <h2 class="slider_title">Draft an email</h2>
+                                <p class="slider_content">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quia obcaecati rem odit ratione eaque ad?</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Right side content -->
+                <div class="content_right">
+                    <div class="right_header">
+                        <a href="#">Logo</a>
+                    </div>
+                    <div class="right_body">
+                        <div class="right_body_inner">
+                            <h2 class="right_title">Get started</h2>
+                            <div class="right_btns">
+                                <a href="login.html"><button>Log in</button></a>
+                                <a href="signup.html"><button>Sign up</button></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Footer -->
+                    <div class="right_footer">
+                        <div class="footer_logo">
+                            <a href="#">Logo</a>
+                        </div>
+                        <div class="footer_content">
+                            <a href="#">Terms of use</a>
+                            <a href="#">Privacy policy</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+
+    <!------------- jquery cdn link for google ------------------>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+    <!-- typescript -->
+    <script src="https://unpkg.com/typeit@8.7.1/dist/index.umd.js"></script>
+
+
+    <!---------------- Custom js ------------------>
+    <script src="{% static 'assets/user/js/script.js' %}"></script>
+</body>
+</html>

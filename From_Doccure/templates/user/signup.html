@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+{% load static %} 
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Open Ai</title>
+
+    <!------------ Google font ------------------->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
+
+
+    <!--------------- Custom CSS Link ----------------->
+    <link rel="stylesheet" href="{% static 'assets/user/css/style.css' %}">
+</head>
+<body>
+    <!------------ Main body ------------------>
+    <section class="main">
+        <div class="container">
+            <div class="signup_main">
+               <div class="logo">
+                <img src="" alt="Logo">
+                <h2 class="signup_logo">Logo</h2>
+               </div> 
+               <div class="signup_form">
+                <h2 class="signup_title">Create your account</h2>
+                <p class="signup_subtitle">Note that phone verification may be required for signup. Your number will only be used to verify your identity for security purposes.</p>
+                <form action="#">
+                    <label for="name">Full Name</label>
+                    <input type="text" name="name" id="name" placeholder="Enter Your name">
+                    <label for="email">Email</label>
+                    <input type="email" name="email" id="email" placeholder="Enter Your Email">
+                    <label for="mobile">Mobile</label>
+                    <input type="tel" name="mobile" id="mobile" placeholder="Enter Your Mobile Number">
+                    <label for="pass">Password</label>
+                    <input type="password" name="pass" id="pass" placeholder="Enter Your Password">
+                    <label for="con_pass">Confirm Password</label>
+                    <input type="password" name="con_pass" id="con_pass" placeholder="Enter Confirm Password">
+                    <button type="submit" class="signup_btn">Continue</button>
+                </form>
+                <p class="under_from">Already have an account? <a href="login.html">Log in</a></p>
+               </div>
+               <div class="signup_foter">
+                <p class="signup_footer_content">
+                    <a href="#">Terms of use</a>
+                    <a href="#">Privacy policy</a>
+                </p>
+               </div>
+            </div>
+        </div>
+    </section>
+    
+
+    <!------------- jquery cdn link for google ------------------>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+    <!---------------- Custom js ------------------>
+    <script src="{% static 'assets/user/js/script.js' %}"></script>
+</body>
+</html>
