@@ -3,6 +3,8 @@ from symptom.models import Symptom
 from . import models 
 from django.contrib import messages
 from django.db import IntegrityError
+from django.http import JsonResponse
+from django.db.models import Q
 
 # Create your views here.
 
@@ -27,6 +29,37 @@ def prediction_panel(request):
     data_symptom17 = Symptom.objects.values_list('symptom17',flat=True).distinct()    
     context = {'symptom_data1':data_symptom1,"symptom_data2":data_symptom2,"symptom_data3":data_symptom3,"symptom_data4":data_symptom4,"symptom_data5":data_symptom5,"symptom_data6":data_symptom6,"symptom_data7":data_symptom7,"symptom_data8":data_symptom8,"symptom_data9":data_symptom9,"symptom_data10":data_symptom10,"symptom_data11":data_symptom11,"symptom_data12":data_symptom12,"symptom_data13":data_symptom13,"symptom_data14":data_symptom14,"symptom_data15":data_symptom15,"symptom_data16":data_symptom16,"symptom_data17":data_symptom17}
     return render(request,'form/Prediction/prediction.html',context)
+
+
+
+
+
+def get_data(request):
+    print(request.GET.get('selected_option'))
+    # print(request.POST.get('selected_option'))
+    # data = Symptom.objects.filter(symptom1=request.GET.get('selected_option')).values()
+    selected_option = request.GET.get('selected_option')
+
+    results = Symptom.objects.filter(
+        Q(symptom1=selected_option) |
+        Q(symptom2=selected_option) |
+        Q(symptom3=selected_option) |
+        Q(symptom4=selected_option) |
+        Q(symptom5=selected_option) |
+        Q(symptom6=selected_option) |
+        Q(symptom7=selected_option) |
+        Q(symptom8=selected_option) |
+        Q(symptom9=selected_option) |
+        Q(symptom10=selected_option) |
+        Q(symptom11=selected_option) |
+        Q(symptom12=selected_option) |
+        Q(symptom13=selected_option) |
+        Q(symptom14=selected_option) |
+        Q(symptom15=selected_option) |
+        Q(symptom16=selected_option) |
+        Q(symptom17=selected_option)
+    ).values()
+    return JsonResponse({'data': list(results)})
 
 def prediction_store(request): 
     try:
