@@ -32,7 +32,7 @@
                                         {% csrf_token %}
                                         <div class="form-group">
                                             <label for="exampleSelectGender">Select Prediction1</label>			
-                                              <select class="form-control select_box" id="exampleSelectGender" name="prediction1">
+                                              <select class="form-control select_box select_box1" id="exampleSelectGender" name="prediction1">
                                                 <option>Select Symptom1</option>
                                                 {% for data_prediction in symptom_data1 %}
                                                 <option value="{{ data_prediction.id }}">{{ data_prediction }}</option>
