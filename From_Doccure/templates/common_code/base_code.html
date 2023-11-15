@@ -177,19 +177,19 @@
 							<li class="menu-title"> 
 								<span>Main</span>
 							</li>
-							<li class="active"> 
+							<li class="{{active}}"> 
 								<a href="{% url 'home' %}"><i class="fe fe-home"></i> <span>Dashboard</span></a>
 							</li>
-							<li> 
+							<li class="{{active}}"> 
 								<a href="{% url 'department' %}"><i class="fe fe-layout"></i> <span>Department</span></a>
 							</li>
-							<li> 
+							<li class="{{active}}"> 
 								<a href="{% url 'di_panel' %}"><i class="fe fe-users"></i> <span>Disease</span></a>
 							</li>	
-							<li> 
+							<li class="{{active}}"> 
 								<a href="{% url 'sym_panel' %}"><i class="fe fe-users"></i> <span>Symptom</span></a>
 							</li>	
-							<li> 
+							<li class="{{active}}"> 
 								<a href="{% url 'prediction_panel' %}"><i class="fe fe-users"></i> <span>Prediction</span></a>
 							</li>
 						</ul>
