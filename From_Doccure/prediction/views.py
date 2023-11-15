@@ -81,6 +81,24 @@ def get_data(request):
     #     return JsonResponse({'error': 'Internal Server Error'})
     return JsonResponse({'data': list(results)})
 
+import json
+def get_dept_data(request):
+    
+    try:
+        # Assuming the request body contains a JSON array
+        # data_array = json.loads(request.body.decode('utf-8'))
+        data_array = request.GET.getlist('selectedValues[]', [])
+
+        # Process the data as needed
+        for item in data_array:
+            # Access each selected value using item['selectedValue']
+            print(item['selectedValue'])
+
+        # You can also return a response if needed
+        return JsonResponse({'status': 'success'})
+    except json.JSONDecodeError:
+        return JsonResponse({'status': 'error', 'message': 'Invalid JSON'}, status=400)
+
 def prediction_store(request): 
     try:
         prediction1 = request.POST.get('prediction1')
