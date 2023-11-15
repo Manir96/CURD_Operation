@@ -5,6 +5,7 @@ from django.contrib import messages
 from django.db import IntegrityError
 from django.http import JsonResponse
 from django.db.models import Q
+# import tensorflow as tf
 
 # Create your views here.
 
@@ -40,44 +41,44 @@ def get_data(request):
     # data = Symptom.objects.filter(symptom1=request.GET.get('selected_option')).values()
     selected_option = request.GET.get('selected_option')
 
-    # results = Symptom.objects.filter(
-    #     Q(symptom1=selected_option) |
-    #     Q(symptom2=selected_option) |
-    #     Q(symptom3=selected_option) |
-    #     Q(symptom4=selected_option) |
-    #     Q(symptom5=selected_option) |
-    #     Q(symptom6=selected_option) |
-    #     Q(symptom7=selected_option) |
-    #     Q(symptom8=selected_option) |
-    #     Q(symptom9=selected_option) |
-    #     Q(symptom10=selected_option) |
-    #     Q(symptom11=selected_option) |
-    #     Q(symptom12=selected_option) |
-    #     Q(symptom13=selected_option) |
-    #     Q(symptom14=selected_option) |
-    #     Q(symptom15=selected_option) |
-    #     Q(symptom16=selected_option) |
-    #     Q(symptom17=selected_option)
-    # ).values()
-    try:
-        selected_option = request.GET.get('selected_option', '')
+    results = Symptom.objects.filter(
+        Q(symptom1=selected_option) |
+        Q(symptom2=selected_option) |
+        Q(symptom3=selected_option) |
+        Q(symptom4=selected_option) |
+        Q(symptom5=selected_option) |
+        Q(symptom6=selected_option) |
+        Q(symptom7=selected_option) |
+        Q(symptom8=selected_option) |
+        Q(symptom9=selected_option) |
+        Q(symptom10=selected_option) |
+        Q(symptom11=selected_option) |
+        Q(symptom12=selected_option) |
+        Q(symptom13=selected_option) |
+        Q(symptom14=selected_option) |
+        Q(symptom15=selected_option) |
+        Q(symptom16=selected_option) |
+        Q(symptom17=selected_option)
+    ).values()
+    # try:
+    #     selected_option = request.GET.get('selected_option', '')
 
-        # Replace Symptom with the actual name of your Django model
-        symptom_conditions = [Q(**{f'symptom{i}__icontains': selected_option}) for i in range(1, 18)]
+    #     # Replace Symptom with the actual name of your Django model
+    #     symptom_conditions = [Q(**{f'symptom{i}__icontains': selected_option}) for i in range(1, 18)]
 
-        # Combine the conditions with OR
-        combined_condition = symptom_conditions.pop() if symptom_conditions else Q()
-        for condition in symptom_conditions:
-            combined_condition |= condition
+    #     # Combine the conditions with OR
+    #     combined_condition = symptom_conditions.pop() if symptom_conditions else Q()
+    #     for condition in symptom_conditions:
+    #         combined_condition |= condition
 
-        # Replace Symptom with the actual name of your Django model
-        results = Symptom.objects.filter(combined_condition).values()
+    #     # Replace Symptom with the actual name of your Django model
+    #     results = Symptom.objects.filter(combined_condition).values()
 
-        return JsonResponse({'data': list(results)})
+    #     return JsonResponse({'data': list(results)})
 
-    except Exception as e:
-        # logging.exception("An error occurred:")
-        return JsonResponse({'error': 'Internal Server Error'})
+    # except Exception as e:
+    #     # logging.exception("An error occurred:")
+    #     return JsonResponse({'error': 'Internal Server Error'})
     return JsonResponse({'data': list(results)})
 
 def prediction_store(request): 

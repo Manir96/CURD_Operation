@@ -12,7 +12,7 @@ $(document).ready(function () {
                 console.log();
                 // var symptomData = data.data[0];
                 // console.log(symptomData)
-                var selectBox = $('.yourSelectBoxId');  // Replace with the actual ID of your select box
+                var selectBox = $('.select_box2');  // Replace with the actual ID of your select box
                 selectBox.empty();  // Clear previous options
 
                 for (i = 0; i < data.data.length; i++) {
