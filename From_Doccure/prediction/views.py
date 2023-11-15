@@ -82,17 +82,17 @@ def get_data(request):
     return JsonResponse({'data': list(results)})
 
 import json
+from django.views.decorators.http import require_POST
+
 def get_dept_data(request):
     
     try:
         # Assuming the request body contains a JSON array
         # data_array = json.loads(request.body.decode('utf-8'))
+        # data_array = request.GET.getlist('selectedValues[]', [])
         data_array = request.GET.getlist('selectedValues[]', [])
-
-        # Process the data as needed
-        for item in data_array:
-            # Access each selected value using item['selectedValue']
-            print(item['selectedValue'])
+        data_array = {'selectedValues': data_array}
+        print("item1", data_array)
 
         # You can also return a response if needed
         return JsonResponse({'status': 'success'})

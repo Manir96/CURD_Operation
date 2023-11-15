@@ -111,10 +111,11 @@ $(document).ready(function () {
         // $.each(selectedValues, function (index, value) {
         //     dataArray.push({ 'selectedValue': value });
         // });
-        console.log(dataArray)
+        // console.log(dataArray)
         $.ajax({
             url: '/prediction/get_dept_data/',
-            data: JSON.stringify({ selectedValues: selectedValues }),
+            method: 'GET',
+            data: { selectedValues: selectedValues },
             contentType: "application/json; charset=utf-8",
             dataType: 'json',
             success: function (data) {
@@ -161,5 +162,5 @@ $(document).ready(function () {
         });
 
 
-    })
+    });
 });
