@@ -121,7 +121,9 @@ $(document).ready(function () {
             dataType: 'json',
             success: function (data) {
                 // Process the data as needed
-                console.log(data);
+                console.log(data.status);
+                $('.result_pred').show()
+                $('.result_pred').text("The Result of Department Prediction: " + data.status)
                 // var symptomData = data.data[0];
                 // console.log(symptomData)
                 // var selectBox = $('.' + newContent);  // Replace with the actual ID of your select box
@@ -158,6 +160,7 @@ $(document).ready(function () {
                 // }
             },
             error: function (error) {
+                $('.result_pred').hide()
                 console.error('Error:', error);
             }
         });

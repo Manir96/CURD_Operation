@@ -144,7 +144,7 @@ def get_dept_data(request):
         print(f"The predicted department is: {predicted_class}\n")
 
         # You can also return a response if needed
-        return JsonResponse({'status': 'success'})
+        return JsonResponse({'status': predicted_class})
     except json.JSONDecodeError:
         return JsonResponse({'status': 'error', 'message': 'Invalid JSON'}, status=400)
 
