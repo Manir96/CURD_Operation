@@ -5,6 +5,8 @@ from django.contrib import messages
 from django.db import IntegrityError
 from django.http import JsonResponse
 from django.db.models import Q
+
+
 # import tensorflow as tf
 
 # Create your views here.
@@ -80,10 +82,35 @@ def get_data(request):
     #     # logging.exception("An error occurred:")
     #     return JsonResponse({'error': 'Internal Server Error'})
     return JsonResponse({'data': list(results)})
-
+import numpy as np
 import json
 from django.views.decorators.http import require_POST
+import nltk
+from nltk.corpus import stopwords
+from sklearn.preprocessing import LabelEncoder
+import tensorflow as tf
+nltk.download('stopwords')
 
+
+def clean_text(text):
+    if isinstance(text, str):
+        text = text.lower()
+        text = ' '.join(word for word in text.split() if word not in stopwords.words('english'))
+    return text
+
+from sklearn.feature_extraction.text import TfidfVectorizer
+
+# Load the trained model
+model = tf.keras.models.load_model("static/ClassificationModel.h5")
+
+
+# Load the label encoder used during training
+label_encoder = LabelEncoder()
+label_encoder.classes_ = np.load("static/label_encoder_classes.npy", allow_pickle=True)
+
+# Load the TF-IDF vectorizer used during training
+tfidf_vectorizer = TfidfVectorizer(max_features=10000)
+tfidf_vectorizer._validate_vocabulary()
 def get_dept_data(request):
     
     try:
@@ -93,6 +120,22 @@ def get_dept_data(request):
         data_array = request.GET.getlist('selectedValues[]', [])
         data_array = {'selectedValues': data_array}
         print("item1", data_array)
+        space_separated_string = ' '.join(data_array['selectedValues'])
+        print("item1", space_separated_string)
+        print("item1", type(space_separated_string))
+        
+
+        user_input = clean_text(space_separated_string)
+        user_input_tfidf = tfidf_vectorizer.fit_transform([user_input])
+        print("User Input TF-IDF Shape:", user_input_tfidf.reshape(None,346).shape)
+        if user_input_tfidf.shape[1] != 346:
+            print("Invalid input dimensions.")
+
+        # Predict the department directly
+        prediction = model.predict(user_input_tfidf.toarray())
+        predicted_class = label_encoder.inverse_transform([np.argmax(prediction)])[0]
+
+        print(f"The predicted department is: {predicted_class}\n")
 
         # You can also return a response if needed
         return JsonResponse({'status': 'success'})
