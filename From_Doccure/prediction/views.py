@@ -101,12 +101,12 @@ def clean_text(text):
 from sklearn.feature_extraction.text import TfidfVectorizer
 
 # Load the trained model
-model = tf.keras.models.load_model("static/ClassificationModel.h5")
+model = tf.keras.models.load_model("static/ClassificationModel2.h5")
 
 
 # Load the label encoder used during training
 label_encoder = LabelEncoder()
-label_encoder.classes_ = np.load("static/label_encoder_classes.npy", allow_pickle=True)
+label_encoder.classes_ = np.load("static/label_encoder_classes2.npy", allow_pickle=True)
 
 # Load the TF-IDF vectorizer used during training
 tfidf_vectorizer = TfidfVectorizer(max_features=10000)
@@ -131,10 +131,10 @@ def get_dept_data(request):
         print("Original User Input TF-IDF Shape:", user_input_tfidf.shape)
 
         # Reshape to match the expected shape (None, 346)
-        user_input_tfidf_reshaped = np.zeros((user_input_tfidf.shape[0], 346))
+        user_input_tfidf_reshaped = np.zeros((user_input_tfidf.shape[0], 324))
         user_input_tfidf_reshaped[:, :user_input_tfidf.shape[1]] = user_input_tfidf.toarray()
         print("Reshaped User Input TF-IDF Shape:", user_input_tfidf_reshaped.shape)
-        if user_input_tfidf_reshaped.shape[1] != 346:
+        if user_input_tfidf_reshaped.shape[1] != 324:
             print("Invalid input dimensions.")
 
         # Predict the department directly
