@@ -26,11 +26,12 @@ $(document).ready(function () {
             }
             // alert('form_group' + incrementedNumber)
 
-            if (incrementedNumber > 2) {
+            if (incrementedNumber > 5) {
                 var confirmed = confirm('Do you want to give more symtomp');
                 if (confirmed) {
                     alert("yes")
                     $('.form_group' + incrementedNumber).show()
+                    $('.predict_dept').hide()
                 }
                 else {
                     $('.predict_dept').show()
