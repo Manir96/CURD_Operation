@@ -125,16 +125,16 @@ def get_dept_data(request):
         print("item1", type(space_separated_string))
         
 
-        user_input = clean_text(space_separated_string)
+        user_input = clean_text(space_separated_string[:-1])
         user_input_tfidf = tfidf_vectorizer.fit_transform([user_input])
-        user_input_tfidf = tfidf_vectorizer.transform([user_input])
+        # user_input_tfidf = tfidf_vectorizer.transform([user_input])
         print("Original User Input TF-IDF Shape:", user_input_tfidf.shape)
 
         # Reshape to match the expected shape (None, 346)
-        user_input_tfidf_reshaped = np.zeros((user_input_tfidf.shape[0], 324))
+        user_input_tfidf_reshaped = np.zeros((user_input_tfidf.shape[0], 346))
         user_input_tfidf_reshaped[:, :user_input_tfidf.shape[1]] = user_input_tfidf.toarray()
         print("Reshaped User Input TF-IDF Shape:", user_input_tfidf_reshaped.shape)
-        if user_input_tfidf_reshaped.shape[1] != 324:
+        if user_input_tfidf_reshaped.shape[1] != 346:
             print("Invalid input dimensions.")
 
         # Predict the department directly
