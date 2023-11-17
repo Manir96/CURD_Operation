@@ -90,7 +90,15 @@ from nltk.corpus import stopwords
 from sklearn.preprocessing import LabelEncoder
 import tensorflow as tf
 nltk.download('stopwords')
+import pandas as pd
+train_data = pd.read_csv("static/train_dataset update 100.csv")
+test_data = pd.read_csv("static/test_dataset update 100.csv")
 
+feature_columns = ["Symptom_1", "Symptom_2", "Symptom_3", "Symptom_4", "Symptom_5", "Symptom_6",
+                   "Symptom_7", "Symptom_8", "Symptom_9", "Symptom_10", "Symptom_11", "Symptom_12",
+                   "Symptom_13", "Symptom_14", "Symptom_15", "Symptom_16", "Symptom_17"]
+
+target_column = "Sub_Department"
 
 def clean_text(text):
     if isinstance(text, str):
@@ -98,7 +106,41 @@ def clean_text(text):
         text = ' '.join(word for word in text.split() if word not in stopwords.words('english'))
     return text
 
+for col in feature_columns:
+    train_data[col] = train_data[col].apply(clean_text)
+    test_data[col] = test_data[col].apply(clean_text)
+
+import pandas as pd
+from sklearn.preprocessing import LabelEncoder
 from sklearn.feature_extraction.text import TfidfVectorizer
+
+# Assuming you have already loaded your train_data and test_data DataFrames
+
+# Combine text features into a single column
+train_data['Combined_Text'] = train_data[feature_columns].apply(lambda row: ' '.join(map(str, row)), axis=1)
+test_data['Combined_Text'] = test_data[feature_columns].apply(lambda row: ' '.join(map(str, row)), axis=1)
+
+# Extract features and target labels
+X_train = train_data['Combined_Text']
+X_test = test_data['Combined_Text']
+
+label_encoder = LabelEncoder()
+
+# Fit the LabelEncoder on the union of training and test set labels
+label_encoder.fit(pd.concat([train_data[target_column], test_data[target_column]]))
+
+# Transform both training and test set labels
+y_train = label_encoder.transform(train_data[target_column])
+y_test = label_encoder.transform(test_data[target_column])
+
+
+
+# TF-IDF Vectorization
+tfidf_vectorizer = TfidfVectorizer(max_features=10000)
+X_train = tfidf_vectorizer.fit_transform(X_train)
+X_test = tfidf_vectorizer.transform(X_test)
+
+
 
 # Load the trained model
 model = tf.keras.models.load_model("static/ClassificationModel2.h5")
@@ -109,8 +151,8 @@ label_encoder = LabelEncoder()
 label_encoder.classes_ = np.load("static/label_encoder_classes2.npy", allow_pickle=True)
 
 # Load the TF-IDF vectorizer used during training
-tfidf_vectorizer = TfidfVectorizer(max_features=10000)
-tfidf_vectorizer._validate_vocabulary()
+# tfidf_vectorizer = TfidfVectorizer(max_features=10000)
+# tfidf_vectorizer._validate_vocabulary()
 def get_dept_data(request):
     
     try:
@@ -120,13 +162,17 @@ def get_dept_data(request):
         data_array = request.GET.getlist('selectedValues[]', [])
         data_array = {'selectedValues': data_array}
         print("item1", data_array)
-        space_separated_string = ' '.join(data_array['selectedValues'])
+        # space_separated_string = ' '.join(data_array['selectedValues'])
+        space_separated_string = ','.join(data_array['selectedValues'][:-1])
         print("item1", space_separated_string)
         print("item1", type(space_separated_string))
         
 
-        user_input = clean_text(space_separated_string[:-1])
-        user_input_tfidf = tfidf_vectorizer.fit_transform([user_input])
+        user_input = space_separated_string
+        print(user_input)
+        # user_input_tfidf = tfidf_vectorizer.fit_transform([user_input])#####
+        user_input_tfidf = tfidf_vectorizer.transform([user_input])
+        print(user_input_tfidf)
         # user_input_tfidf = tfidf_vectorizer.transform([user_input])
         print("Original User Input TF-IDF Shape:", user_input_tfidf.shape)
 

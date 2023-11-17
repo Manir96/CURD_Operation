@@ -26,7 +26,7 @@ $(document).ready(function () {
             }
             // alert('form_group' + incrementedNumber)
 
-            if (incrementedNumber > 3) {
+            if (incrementedNumber > 2) {
                 var confirmed = confirm('Do you want to give more symtomp');
                 if (confirmed) {
                     alert("yes")
