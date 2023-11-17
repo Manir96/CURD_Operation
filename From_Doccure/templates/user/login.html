@@ -21,14 +21,14 @@
         <div class="container">
             <div class="signup_main">
                <div class="logo">
-                <img src="" alt="Logo">
-                <h2 class="signup_logo">Logo</h2>
+                <img src="{% static 'assets/img/logo1.png' %}">
                </div> 
                <div class="signup_form">
                 <div class="from_top">
-                    <h2 class="signup_title">Welcome back</h2>
+                    <h2 class="signup_title">Login Account</h2>
                 </div>
-                <form action="#">
+                <form action="{% url 'prediction_panel' %}" method="POST">
+                    {% csrf_token %}
                     <!-- <label for="mobile">Mobile</label> -->
                     <input type="tel" name="mobile" id="monibe" placeholder="Enter Mobile Number">
                     <!-- <label for="pass">Password</label> -->

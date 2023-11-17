@@ -13,13 +13,13 @@ setInterval(() => {
   } else {
     curentElement.nextElementSibling.classList.add("current");
   }
-  //Typing Anomation
-  new TypeIt(curentElement.children[1], {
-    strings: [curentElement.children[1].innerHTML],
-    speed: 50,
-    waitUntilVisible: true,
-  }).go();
-  
+  // //Typing Anomation
+  // new TypeIt(curentElement.children[1], {
+  //   strings: [curentElement.children[1].innerHTML],
+  //   speed: 50,
+  //   waitUntilVisible: true,
+  // }).go();
+
 }, 5000);
 
 

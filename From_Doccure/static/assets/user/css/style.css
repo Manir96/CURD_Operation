@@ -27,7 +27,7 @@ body{
 
 /* content left home page */
 .content_main .content_left{
-    background: #f9f9d5;
+    background: #d5f9f8;
     width: 60%;
     height: 100vh;
     padding: 2rem;
@@ -38,19 +38,19 @@ body{
 .content_left .left_header a{
     font-size: 1.8rem;
     font-weight: 700;
-    color: #ff793f;
+    color: #3f43ff;
     text-decoration: none;
 }
 .left_body_inner .slider_title{
     font-size: 2.2rem;
     font-weight: 900;
-    color: #ff793f;
+    color: #3f43ff;
     line-height: 3rem;
 }
 .left_body_inner .slider_content{
     font-size: 1.5rem;
     font-weight: 400;
-    color: #ff793f;
+    color: #3f43ff;
 }
 
 
@@ -128,13 +128,13 @@ body{
     color: #000000;
 }
 .signup_main .logo img{
-    width: 50px;
-    height: 50px;
+    width: 300px;
+    /* height: 50px; */
     border-radius: 50%;
-    display: none;
+    /* display: none; */
 }
 .signup_main .logo{
-    margin-bottom: 5rem;
+    margin-bottom: .5rem;
 }
 .signup_main{
     width: 100%;
@@ -150,8 +150,8 @@ body{
 .signup_form form input{
     width: 100%;
     padding: 1rem;
-    outline-color: #0E9272;
-    border: 1px solid #1fa483;
+    outline-color: #221fa4;
+    border: 1px solid #221fa4;
     border-radius: 5px;
     margin-bottom: 1.2rem;
 }
@@ -167,7 +167,7 @@ body{
     margin-bottom: 1rem;
 }
 .signup_form form button{
-    background: #1fa483;
+    background: #221fa4;
     border: 0;
     outline: 0;
     color: #FFFFFF;
@@ -185,7 +185,7 @@ body{
 }
 .signup_main a{
     text-decoration: none;
-    color: #1fa483;
+    color: #221fa4;
 }
 .signup_form .under_from{
     font-size: 1rem;

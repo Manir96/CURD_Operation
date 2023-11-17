@@ -1,5 +1,9 @@
 $(document).ready(function () {
     sym_array = []
+    $('.select2').select2({
+        theme: 'bootstrap4', // Use the Bootstrap 4 theme
+        width: '100%',       // Set the width of the select box
+    });
 
     $('select').each(function (i) {
         t = $(this)
