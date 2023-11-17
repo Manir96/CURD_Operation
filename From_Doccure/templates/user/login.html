@@ -21,18 +21,19 @@
         <div class="container">
             <div class="signup_main">
                <div class="logo">
-                <img src="" alt="Logo">
+                <img src="{% static 'assets/img/logo.png' %}" alt="Logo">
                 <h2 class="signup_logo">Logo</h2>
                </div> 
                <div class="signup_form">
                 <div class="from_top">
                     <h2 class="signup_title">Welcome back</h2>
                 </div>
-                <form action="#">
+                <form method="POST" action="{% url 'login'%}">
+                    {% csrf_token %}
                     <!-- <label for="mobile">Mobile</label> -->
                     <input type="tel" name="mobile" id="monibe" placeholder="Enter Mobile Number">
                     <!-- <label for="pass">Password</label> -->
-                    <input type="password" name="pass" id="pass" placeholder="Enter Your Password">
+                    <input type="password" name="password" id="pass" placeholder="Enter Your Password">
                     <button type="submit" class="signup_btn">Continue</button>
                 </form>
                 <p class="under_from">Don't have an account? <a href="{% url 'signup' %}">Sign up</a></p>
