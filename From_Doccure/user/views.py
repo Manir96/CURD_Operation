@@ -3,10 +3,13 @@ from . models import user_Registration
 from . import models 
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate,login
+from django.views import View
+from . models import aut_user_register
+from . forms import aut_user_registerRegistrationForm,aut_user_registerProfileForm
+from django.contrib import messages
+from django.db.models import Q
+from django.http import JsonResponse
 
-# from django.contrib.auth.forms import UserCreationForm, AuthenticationForm, UsernameField, PasswordChangeForm, PasswordResetForm, SetPasswordForm
-# from django import forms
-# from django.utils.translation import gettext, gettext_lazy as _
 
 
 # Create your views here.
@@ -44,7 +47,43 @@ def signup_store_panel(request):
     return redirect('login')
 
 
-
+class ProfileView(View):
+    def get(self, request):
+      form = aut_user_registerProfileForm
+      return render(request, 'aut_user/profile.html', {'form':form, 'active':'btn-primary'})
+   
+    def post(self, request):
+        form = aut_user_registerProfileForm(request.POST)
+        if form.is_valid():
+            usr = request.user
+            fname = form.cleaned_data['fname']
+            email = form.cleaned_data['email']
+            mobile = form.cleaned_data['mobile']
+            password1 = form.cleaned_data['password1']
+            
+            reg = aut_user_register(user=usr,fname=fname, email=email,mobile=mobile, password1=password1)
+            reg.save()
+            messages.success(request, 'Congratulations! Profile Updated Successfully')
+        return render(request, 'aut_user/profile.html', {'form':form, 'active':'btn-primary'})
+    
+class aut_user_registerRegistrationView(View):
+  def get(self,request):
+     form = aut_user_registerRegistrationForm()
+     return render(request, 'aut_user/register.html', {'form':form})
+  
+  def post(self,request):
+     form = aut_user_registerRegistrationForm(request.POST)
+     if form.is_valid():
+        messages.success(request,'Congratulations registration done.')
+        form.save()
+     return render(request, 'aut_user/register.html', {'form':form})
+    
+def lock_screen(request):
+    return render(request,'aut_user/lock-screen.html')
+def forgot_password(request):
+    return render(request,'aut_user/forgot-password.html')
+def serring_profile(request):
+    return render(request,'aut_user/settings.html')
 
 
 # def login_panel(request):

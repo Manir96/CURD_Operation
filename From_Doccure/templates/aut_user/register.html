@@ -1,0 +1,63 @@
+
+{% extends 'common_code/base_code.html' %}
+{% load static %}
+{% block title %} Register {% endblock title %}
+
+{% block content %}
+			
+		<!-- Main Wrapper -->
+        <div class="main-wrapper login-body">
+            <div class="login-wrapper">
+            	<div class="container">
+                	<div class="loginbox">
+                    	<div class="login-left">
+							<img class="img-fluid" src="{% static 'assets/img/logo-white.png' %}" alt="Logo">
+                        </div>
+                        <div class="login-right">
+							<div class="login-right-wrap">
+								<h1>Register</h1>
+								<p class="account-subtitle">Access to our dashboard</p>
+								
+								<!-- Form -->
+								<form action="" method="post" novalidate class="shadow p-5">
+									{% csrf_token %}
+									{% if messages %}
+									{% for message in messages %}
+									<p {% if message.tags %} class="alert alert-{{message.tags}} mb-5" {% endif %} >{{message}}</p>
+									{% endfor %}
+									{% endif %}
+					
+									
+									{% for frm in form %}
+									<div class="form-group mb-3">
+										{{frm.label_tag}}{{frm}} <small class="text-danger">{{frm.errors|striptags}}</small>
+									</div>
+									{% endfor %}
+									<br>
+									<div class="form-group mb-0">
+										<button class="btn btn-primary btn-block" type="submit">Register</button>
+									</div>
+								</form>
+								<!-- /Form -->
+								
+								<div class="login-or">
+									<span class="or-line"></span>
+									<span class="span-or">or</span>
+								</div>
+								
+								<!-- Social Login -->
+								<div class="social-login">
+									<span>Register with</span>
+									<a href="#" class="facebook"><i class="fa fa-facebook"></i></a><a href="#" class="google"><i class="fa fa-google"></i></a>
+								</div>
+								<!-- /Social Login -->
+								
+								<div class="text-center dont-have">Already have an account? <a href="{% url 'login_l' %}">Login</a></div>
+							</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+		<!-- /Main Wrapper -->
+{% endblock content %}	
